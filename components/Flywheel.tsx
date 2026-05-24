@@ -112,16 +112,13 @@ function ThreeNoiseCircle({ theme }: { theme: "clients" | "nc" | "builders" }) {
         // Polar to Cartesian positioning (centered in canvas)
         const x = width / 2 + currentR * Math.cos(p.angle);
         const y = height / 2 + currentR * Math.sin(p.angle);
-
         // Sinusoidal shimmer opacity
         const alpha = p.alpha * (0.8 + Math.sin(elapsed * 1.8 + p.phase) * 0.16);
-
         // Radial color interpolation: particles brighten near the outer boundary
         const distRatio = Math.min(1, currentR / radius);
         const rColor = Math.round(coreColor.r + (edgeColor.r - coreColor.r) * distRatio);
         const gColor = Math.round(coreColor.g + (edgeColor.g - coreColor.g) * distRatio);
         const bColor = Math.round(coreColor.b + (edgeColor.b - coreColor.b) * distRatio);
-
         // Draw subpixel anti-aliased square particle
         ctx.fillStyle = `rgba(${rColor}, ${gColor}, ${bColor}, ${alpha})`;
         ctx.fillRect(x - p.size / 2, y - p.size / 2, p.size, p.size);
