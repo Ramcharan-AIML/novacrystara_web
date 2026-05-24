@@ -109,7 +109,6 @@ function ThreeNoiseCircle({ theme }: { theme: "clients" | "nc" | "builders" }) {
         // Apply harmonic radial breathing coordinate wobble
         const wobble = Math.sin(elapsed * 2.2 + p.phase) * 0.45;
         const currentR = p.r + wobble;
-
         // Polar to Cartesian positioning (centered in canvas)
         const x = width / 2 + currentR * Math.cos(p.angle);
         const y = height / 2 + currentR * Math.sin(p.angle);
