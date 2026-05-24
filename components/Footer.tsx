@@ -55,7 +55,6 @@ export default function Footer() {
     target: footerRef,
     offset: ["start end", "center center"],
   });
-
   // Maps scroll progress to vertical position (reveals from slot) and opacity cinematically
   // Starts completely hidden (100%) at viewport bottom, slides up to resting position (0%) at window center
   const watermarkY = useTransform(scrollYProgress, [0.0, 1.0], ["100%", "0%"], {
