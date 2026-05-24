@@ -65,27 +65,27 @@ export default function Navbar() {
       style={{ borderBottomWidth: 0.5 }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        {/* Brand — framed crystal box + NOVACRYSTARA / AI LABS LTD text */}
-        <Link href="#top" className="flex items-center gap-3" aria-label="NovaCrystara home">
+        {/* Brand — framed crystal box + NOVACRYSTARA / AI LABS LTD text (scaled down beautifully on mobile) */}
+        <Link href="#top" className="flex items-center gap-2 sm:gap-3" aria-label="NovaCrystara home">
           <span
-            className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md "
+            className="relative flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-md"
           >
-            <span className="relative inline-block h-7 w-7 nc-logo-glow">
+            <span className="relative inline-block h-5.5 w-5.5 sm:h-7 sm:w-7 nc-logo-glow">
               <Image
                 src="/assets/main-logo.png"
                 alt="NovaCrystara"
                 fill
-                sizes="24px"
+                sizes="(min-width: 640px) 28px, 22px"
                 className="object-contain"
               />
             </span>
           </span>
-          <span className="relative inline-block h-6 w-[150px] sm:h-8 sm:w-[180px]">
+          <span className="relative inline-block h-5 w-[120px] sm:h-7.5 sm:w-[180px]">
             <Image
               src="/assets/name-logo.png"
               alt="NOVACRYSTARA AI LABS LTD"
               fill
-              sizes="(min-width: 540px) 180px, 150px"
+              sizes="(min-width: 640px) 180px, 120px"
               priority
               className="object-contain object-left"
             />

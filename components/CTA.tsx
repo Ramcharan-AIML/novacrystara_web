@@ -14,10 +14,7 @@ export default function CTA() {
     >
       <HeroScene variant="mini" />
 
-      <div
-        aria-hidden
-        className="nc-dot-grid pointer-events-none absolute inset-0 opacity-40"
-      />
+
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -35,19 +32,24 @@ export default function CTA() {
         className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
           viewport={VIEWPORT}
-          className="relative mx-auto mb-7 h-[52px] w-[52px] nc-logo-glow sm:h-[64px] sm:w-[64px]"
+          className="mb-8 flex flex-col items-center gap-3.5 select-none"
         >
-          <Image
-            src="/assets/main-logo.png"
-            alt="NovaCrystara"
-            fill
-            sizes="64px"
-            className="object-contain"
-          />
+          <div className="relative h-[60px] w-[60px] nc-logo-glow sm:h-[72px] sm:w-[72px]">
+            <Image
+              src="/assets/main-logo.png"
+              alt="NovaCrystara"
+              fill
+              sizes="(min-width: 640px) 72px, 60px"
+              className="object-contain"
+            />
+          </div>
+          <h3 className="text-[20px] font-extrabold tracking-[0.24em] sm:text-[25px] uppercase bg-gradient-to-r from-[#A78BFA] via-[#C4B5FD] to-[#E8C5D8] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(167,139,250,0.40)]">
+            NOVACRYSTARA
+          </h3>
         </motion.div>
 
         <motion.h2

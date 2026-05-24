@@ -173,7 +173,7 @@ function StatsBar() {
       className="absolute inset-x-0 bottom-6 z-20 px-4 sm:bottom-10 sm:px-8"
     >
       <div
-        className="mx-auto grid max-w-8xl grid-cols-2 divide-x divide-[rgba(167,139,250,0.08)] rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] px-3 py-5 backdrop-blur-md sm:grid-cols-4 sm:px-8"
+        className="mx-auto grid max-w-4xl grid-cols-2 divide-x divide-[rgba(167,139,250,0.08)] rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] px-3 py-5 backdrop-blur-md sm:grid-cols-4 sm:px-8"
         style={{
           boxShadow:
             "0 12px 40px rgba(0,0,0,0.45), 0 0 24px rgba(124,58,237,0.10)",
