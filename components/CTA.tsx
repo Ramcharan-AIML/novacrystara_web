@@ -47,9 +47,9 @@ export default function CTA() {
               className="object-contain"
             />
           </div>
-          <h3 className="text-[20px] font-extrabold tracking-[0.24em] sm:text-[25px] uppercase bg-gradient-to-r from-[#A78BFA] via-[#C4B5FD] to-[#E8C5D8] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(167,139,250,0.40)]">
+          {/* <h3 className="text-[20px] font-extrabold tracking-[0.24em] sm:text-[25px] uppercase bg-gradient-to-r from-[#A78BFA] via-[#C4B5FD] to-[#E8C5D8] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(167,139,250,0.40)]">
             NOVACRYSTARA
-          </h3>
+          </h3> */}
         </motion.div>
 
         <motion.h2
