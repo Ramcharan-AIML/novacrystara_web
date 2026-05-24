@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, easeOut } from "framer-motion";
 
 interface Col {
   title: string;
@@ -46,14 +48,35 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  // Track the scroll of the footer container (0 = entering viewport, 1 = exactly centered in window)
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "center center"],
+  });
+
+  // Maps scroll progress to vertical position (reveals from slot) and opacity cinematically
+  // Starts completely hidden (100%) at viewport bottom, slides up to resting position (0%) at window center
+  const watermarkY = useTransform(scrollYProgress, [0.0, 1.0], ["100%", "0%"], {
+    ease: easeOut,
+  });
+  const watermarkOpacity = useTransform(scrollYProgress, [0.0, 0.75], [0, 1]);
+
   return (
     <footer className="border-t border-[rgba(167,139,250,0.07)] bg-[#04050B] px-5 py-14 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-6xl">
-        {/* Giant premium brand signature (placed at the top of the footer, above columns) */}
-        <div className="mb-14 select-none overflow-hidden text-center sm:mb-16">
-          <h2 className="text-[11vw] font-extrabold tracking-tighter leading-none bg-gradient-to-b from-[#A78BFA] via-[#7C3AED] to-[#04050B] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(167,139,250,0.22)]">
+        {/* Giant premium brand signature with cinematic scroll mask-reveal */}
+        <div
+          ref={footerRef}
+          className="mb-14 select-none overflow-hidden text-center sm:mb-16 relative pb-6"
+        >
+          <motion.h2
+            style={{ y: watermarkY, opacity: watermarkOpacity }}
+            className="text-[11vw] font-extrabold tracking-tighter leading-none bg-gradient-to-b from-[#C4B5FD] via-[#A78BFA] to-[#7C3AED] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(167,139,250,0.25)] select-none pb-2"
+          >
             NovaCrystara
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-2 lg:grid-cols-4">
