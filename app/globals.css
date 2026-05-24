@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #06070E;
+  color: #94A3B8;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Gradient text utility — applied to the second line of every H2
+   ============================================================ */
+.grad-text {
+  background: linear-gradient(135deg, #A78BFA 0%, #C4B5FD 45%, #E8C5D8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============================================================
+   Card primitive — top shimmer line via ::before
+   ============================================================ */
+.nc-card {
+  position: relative;
+  background: linear-gradient(150deg, #0C0A1A, #0E0C1C);
+  border: 0.5px solid rgba(167, 139, 250, 0.10);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 300ms ease, transform 300ms ease;
+}
+.nc-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 139, 250, 0.25),
+    transparent
+  );
+  pointer-events: none;
+}
+.nc-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* ============================================================
+   Logo glow (matches spec drop-shadow stack)
+   ============================================================ */
+.nc-logo-glow {
+  filter: drop-shadow(0 0 24px rgba(124, 58, 237, 0.55))
+    drop-shadow(0 0 8px rgba(196, 181, 253, 0.3));
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.nc-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #6D28D9, #8B5CF6, #A78BFA);
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 0 24px rgba(109, 40, 217, 0.35);
+  transition: transform 200ms ease, filter 200ms ease;
+}
+.nc-btn-primary:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+.nc-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0.5px solid rgba(167, 139, 250, 0.20);
+  background: rgba(167, 139, 250, 0.04);
+  color: #C4B5FD;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: border-color 200ms ease, background 200ms ease, color 200ms ease;
+}
+.nc-btn-secondary:hover {
+  border-color: rgba(167, 139, 250, 0.40);
+  background: rgba(167, 139, 250, 0.08);
+  color: #F0EEF8;
+}
+
+/* ============================================================
+   Eyebrow label
+   ============================================================ */
+.nc-eyebrow {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A78BFA;
+}
+
+/* ============================================================
+   Dot grid background (used by hero & CTA)
+   ============================================================ */
+.nc-dot-grid {
+  background-image: radial-gradient(
+    rgba(167, 139, 250, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+/* ============================================================
+   Section divider helper
+   ============================================================ */
+.nc-divider {
+  height: 0.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 139, 250, 0.18),
+    transparent
+  );
+}
+
+/* ============================================================
+   Scrollbar — subtle purple
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #06070E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A1432;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2A1F4A;
+}
+
+/* ============================================================
+   Reduced-motion: kill all transitions & animations globally
+   (Framer Motion variants additionally short-circuited in lib/motion.ts)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
