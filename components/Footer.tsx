@@ -40,6 +40,8 @@ const COLS: Col[] = [
   },
 ];
 
+
+// Social icons kept
 const SOCIALS = [
   { label: "LinkedIn", href: "#", icon: <IconLinkedIn /> },
   { label: "X (Twitter)", href: "#", icon: <IconX /> },
@@ -61,6 +63,8 @@ export default function Footer() {
     ease: easeOut,
   });
   const watermarkOpacity = useTransform(scrollYProgress, [0.0, 0.75], [0, 1]);
+
+
 
   return (
     <footer className="border-t border-[rgba(167,139,250,0.07)] bg-[#04050B] px-5 py-14 sm:px-8 sm:py-16">
