@@ -585,7 +585,7 @@ function CardItem({ card, index }: { card: CardProps; index: number }) {
 
         {/* Background art (SVG, bottom-right, opacity 0.32 -> 0.75 on hover) */}
         <div
-          className="absolute bottom-[-20px] right-[-20px] pointer-events-none transition-all duration-500 z-0"
+          className="absolute bottom-[-10px] right-[-10px] md:bottom-[-12px] md:right-[-12px] lg:bottom-[-20px] lg:right-[-20px] pointer-events-none transition-all duration-500 z-0"
           style={{ opacity: isHovered ? 0.75 : 0.32 }}
         >
           {card.bgArt}
@@ -656,7 +656,7 @@ function IconRocket() {
 
 function BgArt1() {
   return (
-    <svg width="220" height="220" viewBox="0 0 120 120" fill="none" className="pointer-events-none origin-bottom-right">
+    <svg viewBox="0 0 120 120" fill="none" className="w-[130px] h-[130px] md:w-[145px] md:h-[145px] lg:w-[185px] lg:h-[185px] pointer-events-none origin-bottom-right">
       {/* AI CPU Center Group */}
       <g className="cpu-group origin-center">
         {/* Wires/Tracks that branch out */}
@@ -714,7 +714,7 @@ function BgArt1() {
 
 function BgArt2() {
   return (
-    <svg width="220" height="220" viewBox="0 0 120 120" fill="none" className="pointer-events-none origin-bottom-right">
+    <svg viewBox="0 0 120 120" fill="none" className="w-[130px] h-[130px] md:w-[145px] md:h-[145px] lg:w-[185px] lg:h-[185px] pointer-events-none origin-bottom-right">
       <g className="track-group origin-center">
         {/* Serpentine Winding Path */}
         <path d="M 25 30 L 70 30 A 15 15 0 0 1 85 45 A 15 15 0 0 1 70 60 L 50 60 A 15 15 0 0 0 35 75 A 15 15 0 0 0 50 90 L 75 90" 
@@ -747,7 +747,7 @@ function BgArt2() {
 
 function BgArt3() {
   return (
-    <svg width="220" height="220" viewBox="0 0 120 120" fill="none" className="pointer-events-none origin-bottom-right">
+    <svg viewBox="0 0 120 120" fill="none" className="w-[130px] h-[130px] md:w-[145px] md:h-[145px] lg:w-[185px] lg:h-[185px] pointer-events-none origin-bottom-right">
       {/* Rocket Space Badge Group */}
       <g className="rocket-badge origin-center">
         {/* Circular Outer Badge Ring */}

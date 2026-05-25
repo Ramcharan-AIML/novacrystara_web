@@ -90,10 +90,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
-          className="mb-7 inline-flex items-center gap-2 rounded-full border border-[rgba(29,194,35,0.2)] bg-[rgba(255,255,255,0.04)] px-4 py-1.5 text-[11px] tracking-[0.18em] text-[#efeef0]"
+          className="mb-7 inline-flex items-center gap-2 rounded-full border border-[rgba(167,139,250,0.25)] bg-[rgba(167,139,250,0.04)] px-4 py-1.5 text-[11px] tracking-[0.18em] text-[#efeef0]"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-nc-violet shadow-[0_0_8px_rgba(167,139,250,0.7)]" />
-          AI &amp; TELEMETRY LABS · LONDON, UK
+          NOVACRYSTARA AI LABS · LONDON, UK
         </motion.div>
 
         <h1 className="font-sans text-[40px] font-extrabold leading-[1.1] tracking-tight text-nc-heading sm:text-5xl lg:text-hero">

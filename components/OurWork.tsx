@@ -95,67 +95,169 @@ export default function OurWork() {
         /* ------------------------------------------------------------
            Sequential Background Draw-Build Animations (On Hover)
            ------------------------------------------------------------ */
-        @keyframes draw-path-work {
-          0% { stroke-dashoffset: 150; opacity: 0; }
-          10% { opacity: 0.8; }
-          65% { stroke-dashoffset: 0; opacity: 0.8; }
-          80% { stroke-dashoffset: 0; opacity: 0.8; }
-          90% { opacity: 0; }
-          100% { stroke-dashoffset: 150; opacity: 0; }
+        @keyframes iot-line-draw {
+          0% { stroke-dashoffset: 40; opacity: 0.48; }
+          100% { stroke-dashoffset: 0; opacity: 0.95; }
         }
-        @keyframes scale-bar-work {
-          0% { transform: scaleY(0); opacity: 0; }
-          20% { transform: scaleY(0); opacity: 0; }
-          55% { transform: scaleY(1); opacity: 0.9; }
-          80% { transform: scaleY(1); opacity: 0.9; }
-          90% { transform: scaleY(0); opacity: 0; }
-          100% { transform: scaleY(0); opacity: 0; }
+        .iot-line {
+          stroke-dasharray: 40;
+          stroke-dashoffset: 0;
+          opacity: 0.48;
+          transition: opacity 0.3s, stroke-dashoffset 0.3s;
         }
-        @keyframes scale-node-work {
-          0% { transform: scale(0); opacity: 0; }
-          25% { transform: scale(0); opacity: 0; }
-          40% { transform: scale(1.3); opacity: 0.9; }
-          45% { transform: scale(1); opacity: 0.9; }
-          80% { transform: scale(1); opacity: 0.9; }
-          90% { transform: scale(0); opacity: 0; }
-          100% { transform: scale(0); opacity: 0; }
+        .group\\/outer:hover .iot-line {
+          opacity: 0.95;
+          animation: iot-line-draw 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
-        @keyframes scale-box-work {
-          0% { transform: scale(0); opacity: 0; }
-          12% { transform: scale(0); opacity: 0; }
-          26% { transform: scale(1.1); opacity: 0.85; }
-          30% { transform: scale(1); opacity: 0.85; }
-          80% { transform: scale(1); opacity: 0.85; }
-          90% { transform: scale(0); opacity: 0; }
-          100% { transform: scale(0); opacity: 0; }
+        
+        @keyframes iot-node-pop {
+          0% { transform: scale(0); opacity: 0.48; }
+          70% { transform: scale(1.15); opacity: 1; }
+          100% { transform: scale(1); opacity: 1; }
         }
-        @keyframes pulse-radial {
-          0%, 100% { transform: scale(1); opacity: 0.35; }
-          50% { transform: scale(1.08); opacity: 0.55; }
+        .iot-node {
+          transform: scale(1);
+          opacity: 0.48;
+          transition: opacity 0.3s, transform 0.3s;
         }
-        @keyframes scroll-dash-work {
-          to { stroke-dashoffset: -20; }
+        .iot-node-tl { transform-origin: 28px 28px; }
+        .iot-node-tr { transform-origin: 92px 28px; }
+        .iot-node-bl { transform-origin: 28px 92px; }
+        .iot-node-br { transform-origin: 92px 92px; }
+        
+        .group\\/outer:hover .iot-node {
+          opacity: 1;
+          animation: iot-node-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .group\\/outer:hover .iot-node-tl { animation-delay: 0.15s; }
+        .group\\/outer:hover .iot-node-tr { animation-delay: 0.3s; }
+        .group\\/outer:hover .iot-node-bl { animation-delay: 0.45s; }
+        .group\\/outer:hover .iot-node-br { animation-delay: 0.6s; }
+
+        @keyframes iot-center-glow {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(167,139,250,0.3)); }
+          50% { transform: scale(1.04); filter: drop-shadow(0 0 8px rgba(167,139,250,0.7)); }
+        }
+        .iot-center-g {
+          transform-origin: 60px 60px;
+          opacity: 0.55;
+          transition: opacity 0.3s;
+        }
+        .group\\/outer:hover .iot-center-g {
+          opacity: 1;
+          animation: iot-center-glow 2.5s ease-in-out infinite;
         }
 
-        /* SVG Class Assignment Triggers */
-        .group\\/outer:hover .draw-path-line {
-          stroke-dasharray: 150;
-          animation: draw-path-work 4.5s infinite ease-in-out;
+        @keyframes cloud-draw {
+          0% { stroke-dashoffset: 200; opacity: 0.48; }
+          100% { stroke-dashoffset: 0; opacity: 0.95; }
         }
-        .group\\/outer:hover .scale-chart-bar {
-          animation: scale-bar-work 4.5s infinite ease-in-out;
+        .cloud-path {
+          stroke-dasharray: 200;
+          stroke-dashoffset: 0;
+          opacity: 0.48;
+          transition: opacity 0.3s, stroke-dashoffset 0.3s;
         }
-        .group\\/outer:hover .scale-node-dot {
-          animation: scale-node-work 4.5s infinite ease-in-out;
+        .group\\/outer:hover .cloud-path {
+          opacity: 0.95;
+          animation: cloud-draw 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
-        .group\\/outer:hover .scale-devops-box {
-          animation: scale-box-work 4.5s infinite ease-in-out;
+        
+        .cloud-node-dot {
+          transform: scale(1);
+          opacity: 0.48;
+          transition: opacity 0.3s, transform 0.3s;
         }
-        .group\\/outer:hover .scroll-dash-path {
-          animation: scroll-dash-work 2.5s infinite linear;
+        .cloud-node-top { transform-origin: 64px 34px; }
+        .cloud-node-bl { transform-origin: 35px 82px; }
+        .cloud-node-br { transform-origin: 85px 82px; }
+        
+        .group\\/outer:hover .cloud-node-dot {
+          opacity: 1;
+          animation: iot-node-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-        .group\\/outer:hover .pulse-circle {
-          animation: pulse-radial 3s infinite ease-in-out;
+        .group\\/outer:hover .cloud-node-top { animation-delay: 0.4s; }
+        .group\\/outer:hover .cloud-node-bl { animation-delay: 0.8s; }
+        .group\\/outer:hover .cloud-node-br { animation-delay: 0.8s; }
+
+        @keyframes devops-draw {
+          0% { stroke-dashoffset: 240; opacity: 0.48; }
+          100% { stroke-dashoffset: 0; opacity: 0.95; }
+        }
+        .devops-path {
+          stroke-dasharray: 240;
+          stroke-dashoffset: 0;
+          opacity: 0.48;
+          transition: opacity 0.3s, stroke-dashoffset 0.3s;
+        }
+        .group\\/outer:hover .devops-path {
+          opacity: 0.95;
+          animation: devops-draw 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .devops-text {
+          opacity: 0.55;
+          transition: opacity 0.3s, fill 0.3s;
+        }
+        @keyframes text-glow-devops {
+          0%, 100% { opacity: 0.8; fill: #C4B5FD; filter: drop-shadow(0 0 1px rgba(196,181,253,0.3)); }
+          50% { opacity: 1; fill: #ffffff; filter: drop-shadow(0 0 6px rgba(196,181,253,0.8)); }
+        }
+        .group\\/outer:hover .devops-text {
+          opacity: 0.95;
+          animation: text-glow-devops 2s ease-in-out infinite;
+        }
+
+        @keyframes gear-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .gear-group {
+          transform-origin: 30px 38px;
+          opacity: 0.55;
+          transition: opacity 0.3s;
+        }
+        .group\\/outer:hover .gear-group {
+          opacity: 0.95;
+          animation: gear-spin 4s linear infinite;
+        }
+
+        @keyframes chart-bar-grow {
+          0% { transform: scaleY(0); opacity: 0.48; }
+          100% { transform: scaleY(1); opacity: 0.95; }
+        }
+        .chart-bar {
+          opacity: 0.48;
+          transition: opacity 0.3s, transform 0.3s;
+        }
+        .chart-bar-1 { transform-origin: 48px 90px; }
+        .chart-bar-2 { transform-origin: 60px 90px; }
+        .chart-bar-3 { transform-origin: 72px 90px; }
+        .chart-bar-4 { transform-origin: 84px 90px; }
+        
+        .group\\/outer:hover .chart-bar {
+          opacity: 0.95;
+          animation: chart-bar-grow 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .group\\/outer:hover .chart-bar-1 { animation-delay: 0.1s; }
+        .group\\/outer:hover .chart-bar-2 { animation-delay: 0.25s; }
+        .group\\/outer:hover .chart-bar-3 { animation-delay: 0.4s; }
+        .group\\/outer:hover .chart-bar-4 { animation-delay: 0.55s; }
+
+        @keyframes growth-arrow-draw {
+          0% { stroke-dashoffset: 120; opacity: 0.48; }
+          100% { stroke-dashoffset: 0; opacity: 0.95; }
+        }
+        .growth-arrow {
+          stroke-dasharray: 120;
+          stroke-dashoffset: 0;
+          opacity: 0.48;
+          transition: opacity 0.3s, stroke-dashoffset 0.3s;
+        }
+        .group\\/outer:hover .growth-arrow {
+          opacity: 0.95;
+          animation: growth-arrow-draw 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          animation-delay: 0.3s;
         }
       `}} />
 
@@ -294,8 +396,8 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
 
         {/* Background art vector (Sits bottom-right, opacity boosts on hover) */}
         <div
-          className="absolute bottom-[-15px] right-[-15px] pointer-events-none transition-all duration-500 z-0"
-          style={{ opacity: isHovered ? 0.16 : 0.05 }}
+          className="absolute bottom-[-6px] right-[-6px] md:bottom-[-8px] md:right-[-8px] lg:bottom-[-10px] lg:right-[-10px] pointer-events-none transition-all duration-500 z-0"
+          style={{ opacity: isHovered ? 0.75 : 0.32 }}
         >
           {project.bgArt}
         </div>
@@ -333,27 +435,54 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
 
 function BgArtWork1() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.5" className="pointer-events-none">
-      {/* Radar circle concentric scans */}
-      <circle cx="50" cy="50" r="16" strokeDasharray="3 3" className="pulse-circle origin-center" />
-      <circle cx="50" cy="50" r="28" strokeDasharray="2 4" opacity="0.4" />
-      <circle cx="50" cy="50" r="40" strokeDasharray="1 5" opacity="0.2" />
+    <svg viewBox="0 0 120 120" fill="none" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
+      {/* 4 Satellite Connectors */}
+      <line x1="49" y1="49" x2="35" y2="35" stroke="#A78BFA" strokeWidth="1.6" className="iot-line" />
+      <line x1="71" y1="49" x2="85" y2="35" stroke="#A78BFA" strokeWidth="1.6" className="iot-line" />
+      <line x1="49" y1="71" x2="35" y2="85" stroke="#A78BFA" strokeWidth="1.6" className="iot-line" />
+      <line x1="71" y1="71" x2="85" y2="85" stroke="#A78BFA" strokeWidth="1.6" className="iot-line" />
 
-      {/* Grid cross lines */}
-      <line x1="10" y1="50" x2="90" y2="50" opacity="0.3" />
-      <line x1="50" y1="10" x2="50" y2="90" opacity="0.3" />
+      {/* Top Stacked Dashes */}
+      <line x1="57" y1="40" x2="63" y2="40" stroke="#A78BFA" strokeWidth="1.5" />
+      <line x1="57" y1="43" x2="63" y2="43" stroke="#A78BFA" strokeWidth="1.5" />
 
-      {/* Radar sweeping line & nodes */}
-      <line x1="50" y1="50" x2="82" y2="28" strokeWidth="0.85" className="draw-path-line" />
-      <line x1="50" y1="50" x2="22" y2="72" strokeWidth="0.85" className="draw-path-line" />
+      {/* Bottom Stacked Dashes */}
+      <line x1="57" y1="77" x2="63" y2="77" stroke="#A78BFA" strokeWidth="1.5" />
+      <line x1="57" y1="80" x2="63" y2="80" stroke="#A78BFA" strokeWidth="1.5" />
 
-      <circle cx="82" cy="28" r="3.5" fill="#34D399" className="scale-node-dot origin-center" />
-      <circle cx="22" cy="72" r="3" fill="#A78BFA" className="scale-node-dot origin-center" />
+      {/* Satellite Nodes */}
+      {/* TL: Lock Node */}
+      <g className="iot-node iot-node-tl origin-center">
+        <circle cx="28" cy="28" r="10" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <rect x="24" y="27" width="8" height="6" rx="1.2" fill="none" stroke="#C4B5FD" strokeWidth="1" />
+        <path d="M25.5,27 L25.5,25.5 A2.5,2.5 0 0,1 30.5,25.5 L30.5,27" fill="none" stroke="#C4B5FD" strokeWidth="1" />
+      </g>
 
-      {/* Uptime metric badge text */}
-      <g transform="translate(56, 75)" className="scale-node-dot origin-center">
-        <text fill="#10B981" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">99.9%</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Uptime delivered</text>
+      {/* TR: Light Bulb Node */}
+      <g className="iot-node iot-node-tr origin-center">
+        <circle cx="92" cy="28" r="10" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <circle cx="92" cy="26" r="3.2" fill="none" stroke="#C4B5FD" strokeWidth="1" />
+        <path d="M90.5,28.2 L90.5,30.5 L93.5,30.5 L93.5,28.2" fill="none" stroke="#C4B5FD" strokeWidth="1" />
+        <line x1="91" y1="31.8" x2="93" y2="31.8" stroke="#C4B5FD" strokeWidth="0.8" />
+      </g>
+
+      {/* BL: Home Node */}
+      <g className="iot-node iot-node-bl origin-center">
+        <circle cx="28" cy="92" r="10" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <path d="M23,93 L28,88.5 L33,93 L33,96.5 L23,96.5 Z" fill="none" stroke="#C4B5FD" strokeWidth="1.2" strokeLinejoin="round" />
+        <rect x="26.5" y="93" width="3" height="3.5" fill="none" stroke="#C4B5FD" strokeWidth="0.8" />
+      </g>
+
+      {/* BR: Cloud Node */}
+      <g className="iot-node iot-node-br origin-center">
+        <circle cx="92" cy="92" r="10" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <path d="M88,94 C86.5,94 85.5,93 85.5,91.8 C85.5,90.6 86.5,89.5 88,89.5 C88.5,88 90,88 91,89 C92,88.5 93.5,89 93.5,91 C93.5,92 92.5,94 91,94 Z" fill="none" stroke="#C4B5FD" strokeWidth="1" strokeLinejoin="round" />
+      </g>
+
+      {/* Center IoT Core */}
+      <g className="iot-center-g origin-center">
+        <circle cx="60" cy="60" r="15" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <text x="60" y="63.5" fill="#A78BFA" fontSize="8" fontWeight="950" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.05em">IOT</text>
       </g>
     </svg>
   );
@@ -361,114 +490,106 @@ function BgArtWork1() {
 
 function BgArtWork2() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#C4B5FD" strokeWidth="0.6" className="pointer-events-none">
-      {/* Big Cloud */}
+    <svg viewBox="0 0 120 120" fill="none" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
+      <defs>
+        <linearGradient id="coralOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F59E0B" />
+          <stop offset="100%" stopColor="#EF4444" />
+        </linearGradient>
+      </defs>
+
+      {/* Branching Tree Connectors */}
+      <line x1="35" y1="82" x2="85" y2="82" stroke="url(#coralOrangeGrad)" strokeWidth="1.8" className="cloud-path" />
+      <line x1="60" y1="34" x2="60" y2="82" stroke="url(#coralOrangeGrad)" strokeWidth="1.8" className="cloud-path" />
+
+      {/* Clouds Outline */}
+      {/* Top Cloud */}
       <path 
-        d="M28,45 C24,45 20,41 20,36 C20,31 24,27 29,27 C31,20 38,15 46,15 C53,15 59,19 62,25 C65,23 68,23 71,25 C74,27 76,31 76,35 C76,40 72,45 67,45 Z" 
-        className="draw-path-line"
+        d="M48,42 C44.5,42 41,39 41,34.5 C41,30 44.5,26.5 49.5,26.5 C51,19.5 57,15 65,15 C72,15 78,19 81,25 C84,23 87,23 90,25 C93,27 95,31 95,35 C95,40 91,42 86,42 Z" 
+        stroke="url(#coralOrangeGrad)" strokeWidth="2" className="cloud-path" strokeLinecap="round"
       />
       
-      {/* Small Cloud */}
+      {/* Bottom-Left Cloud */}
       <path 
-        d="M50,68 C47.5,68 45,65.5 45,63 C45,60.5 47.5,58 50,58 C51,53.5 55,50 60,50 C64.5,50 68,52.5 69.5,56 C71,55 73,55 74.5,56.5 C76,58 77,60.5 77,63 C77,65.5 74.5,68 72,68 Z" 
-        className="draw-path-line"
+        d="M23,90 C20,90 18,87.5 18,84.5 C18,81.5 20.5,79 24.5,79 C25.5,73.5 29.5,70 35,70 C40,70 44,73 45.5,76.5 C47.5,75.5 49.5,75.5 51,77 C52.5,78.5 53.5,81 53.5,84 C53.5,87 51,90 48,90 Z" 
+        stroke="url(#coralOrangeGrad)" strokeWidth="1.8" className="cloud-path" strokeLinecap="round"
       />
 
-      {/* Connecting Dotted Line with active scroll dash */}
+      {/* Bottom-Right Cloud */}
       <path 
-        d="M46,38 C46,46 54,48 54,54" 
-        strokeWidth="0.8" 
-        strokeDasharray="3 3" 
-        className="scroll-dash-path" 
+        d="M73,90 C70,90 68,87.5 68,84.5 C68,81.5 70.5,79 74.5,79 C75.5,73.5 79.5,70 85,70 C90,70 94,73 95.5,76.5 C97.5,75.5 99.5,75.5 101,77 C102.5,78.5 103.5,81 103.5,84 C103.5,87 101,90 98,90 Z" 
+        stroke="url(#coralOrangeGrad)" strokeWidth="1.8" className="cloud-path" strokeLinecap="round"
       />
 
-      <circle cx="54" cy="54" r="2" fill="#C4B5FD" className="scale-node-dot origin-center" />
-
-      {/* Deployment metric badge text */}
-      <g transform="translate(68, 80)" className="scale-node-dot origin-center">
-        <text fill="#C4B5FD" fontSize="10.5" fontWeight="extrabold" letterSpacing="0.05em">3x</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Faster deployment</text>
-      </g>
+      {/* Central Node Dots inside Clouds */}
+      <circle cx="60" cy="34" r="2.8" fill="#FFFFFF" stroke="url(#coralOrangeGrad)" strokeWidth="1.2" className="cloud-node-dot cloud-node-top origin-center" />
+      <circle cx="35" cy="82" r="2.5" fill="#FFFFFF" stroke="url(#coralOrangeGrad)" strokeWidth="1.2" className="cloud-node-dot cloud-node-bl origin-center" />
+      <circle cx="85" cy="82" r="2.5" fill="#FFFFFF" stroke="url(#coralOrangeGrad)" strokeWidth="1.2" className="cloud-node-dot cloud-node-br origin-center" />
     </svg>
   );
 }
 
 function BgArtWork3() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.55" className="pointer-events-none">
-      {/* Horizontal Pipeline flow path */}
-      <line x1="10" y1="36" x2="90" y2="36" className="draw-path-line" />
+    <svg viewBox="0 0 120 120" fill="none" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
+      {/* Infinity Lemniscate Path */}
+      <path 
+        d="M 60,60 C 45,40 20,40 20,60 C 20,80 45,80 60,60 C 75,40 100,40 100,60 C 100,80 75,80 60,60 Z" 
+        stroke="#C4B5FD" strokeWidth="2.8" strokeLinecap="round" className="devops-path"
+      />
 
-      {/* DevOps Stage Blocks */}
-      <g className="scale-devops-box origin-center">
-        {/* Code Box */}
-        <rect x="12" y="28" width="13" height="8" rx="1.5" strokeWidth="0.5" />
-        <text fill="#A78BFA" fontSize="3" fontWeight="bold" x="14.5" y="33.5">CODE</text>
+      {/* Arrow Heads at Loops Exits */}
+      {/* Bottom-Left Arrow */}
+      <path 
+        d="M 23,72 L 20,60 L 32,60" 
+        stroke="#C4B5FD" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" 
+      />
+      {/* Top-Right Arrow */}
+      <path 
+        d="M 97,48 L 100,60 L 88,60" 
+        stroke="#C4B5FD" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" 
+      />
 
-        {/* Build Box */}
-        <rect x="31" y="28" width="13" height="8" rx="1.5" strokeWidth="0.5" />
-        <text fill="#A78BFA" fontSize="3" fontWeight="bold" x="33" y="33.5">BUILD</text>
-
-        {/* Test Box */}
-        <rect x="50" y="28" width="13" height="8" rx="1.5" strokeWidth="0.5" />
-        <text fill="#A78BFA" fontSize="3" fontWeight="bold" x="52.5" y="33.5">TEST</text>
-
-        {/* Deploy Box */}
-        <rect x="69" y="28" width="13" height="8" rx="1.5" strokeWidth="0.5" />
-        <text fill="#A78BFA" fontSize="3" fontWeight="bold" x="70.5" y="33.5">DEPLOY</text>
-      </g>
-
-      {/* Loops underneath representing iterations */}
-      <path d="M25,48 A 6 6 0 0 0 37,48" strokeDasharray="2 2" opacity="0.4" />
-      <path d="M44,48 A 6 6 0 0 0 56,48" strokeDasharray="2 2" opacity="0.4" />
-      <path d="M63,48 A 6 6 0 0 0 75,48" strokeDasharray="2 2" opacity="0.4" />
-
-      {/* DevOps metric badge text */}
-      <g transform="translate(68, 76)" className="scale-node-dot origin-center">
-        <text fill="#A78BFA" fontSize="10.5" fontWeight="extrabold" letterSpacing="0.05em">80%</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Deploy time cut</text>
-      </g>
+      {/* DEV / OPS Texts inside loops */}
+      <text x="36" y="63.2" fill="#C4B5FD" fontSize="7.5" fontWeight="900" textAnchor="middle" fontFamily="sans-serif" className="devops-text">DEV</text>
+      <text x="84" y="63.2" fill="#C4B5FD" fontSize="7.5" fontWeight="900" textAnchor="middle" fontFamily="sans-serif" className="devops-text">OPS</text>
     </svg>
   );
 }
 
 function BgArtWork4() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#C4B5FD" strokeWidth="0.5" className="pointer-events-none">
-      {/* ETL cylinder storage */}
-      <g transform="translate(18, 15)">
-        <ellipse cx="12" cy="6" rx="8" ry="3.5" strokeWidth="0.6" className="draw-path-line" />
-        <line x1="4" y1="6" x2="4" y2="20" strokeWidth="0.6" />
-        <line x1="20" y1="6" x2="20" y2="20" strokeWidth="0.6" />
-        <path d="M4,13 C4,16.5 20,16.5 20,13" strokeWidth="0.6" opacity="0.5" />
-        <path d="M4,20 C4,23.5 20,23.5 20,20" strokeWidth="0.6" className="draw-path-line" />
-        <text fill="#C4B5FD" fontSize="3" fontWeight="bold" x="8.5" y="14.5" opacity="0.7">ETL</text>
+    <svg viewBox="0 0 120 120" fill="none" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
+      {/* High-Tech Gear Spinning Group (Top-Left) */}
+      <g className="gear-group origin-center">
+        <circle cx="30" cy="38" r="7.5" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.8" />
+        <circle cx="30" cy="38" r="3" fill="none" stroke="#C4B5FD" strokeWidth="1.2" />
+        {/* Gear Spokes / Teeth */}
+        <path d="M 30 29 L 30 32 M 30 44 L 30 47 M 21 38 L 24 38 M 36 38 L 39 38 M 23.5 31.5 L 26 34 M 34 42 L 36.5 44.5 M 23.5 44.5 L 26 42 M 34 31.5 L 36.5 34" stroke="#A78BFA" strokeWidth="1.8" strokeLinecap="round" />
       </g>
 
-      {/* Arrow going from ETL to Chart */}
-      <path d="M42,26 C48,26 50,34 50,42" strokeDasharray="2 2" className="scroll-dash-path" />
-
-      {/* Incremental Bar Chart */}
-      <g transform="translate(54, 30)">
+      {/* Incremental Bar Chart Group (Right Side) */}
+      <g>
         {/* Bar 1 */}
-        <rect x="2" y="24" width="4.5" height="12" rx="0.8" className="scale-chart-bar origin-bottom" style={{ transformOrigin: "4px 36px" }} />
+        <rect x="52" y="75" width="6.5" height="15" rx="1.5" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.2" className="chart-bar chart-bar-1 origin-bottom" />
         {/* Bar 2 */}
-        <rect x="9.5" y="16" width="4.5" height="20" rx="0.8" className="scale-chart-bar origin-bottom" style={{ transformOrigin: "11px 36px" }} />
+        <rect x="64" y="60" width="6.5" height="30" rx="1.5" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.2" className="chart-bar chart-bar-2 origin-bottom" />
         {/* Bar 3 */}
-        <rect x="17" y="6" width="4.5" height="30" rx="0.8" className="scale-chart-bar origin-bottom" style={{ transformOrigin: "19px 36px" }} />
+        <rect x="76" y="45" width="6.5" height="45" rx="1.5" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.2" className="chart-bar chart-bar-3 origin-bottom" />
         {/* Bar 4 */}
-        <rect x="24.5" y="12" width="4.5" height="24" rx="0.8" className="scale-chart-bar origin-bottom" style={{ transformOrigin: "26px 36px" }} />
-
-        {/* Peak chart line connecting bars */}
-        <path d="M4.5,24 L12,16 L19.5,6 L27,12" strokeWidth="0.75" className="draw-path-line" />
-        <circle cx="19.5" cy="6" r="1.5" fill="#34D399" className="scale-node-dot origin-center" />
+        <rect x="88" y="30" width="6.5" height="60" rx="1.5" fill="#0D0B1C" stroke="#A78BFA" strokeWidth="1.2" className="chart-bar chart-bar-4 origin-bottom" />
       </g>
 
-      {/* Revenue metric badge text */}
-      <g transform="translate(62, 80)" className="scale-node-dot origin-center">
-        <text fill="#C4B5FD" fontSize="10.5" fontWeight="extrabold" letterSpacing="0.05em">2.4x</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Revenue insight gain</text>
-      </g>
+      {/* Sweeping Growth Curve Arrow */}
+      <path 
+        d="M 30,80 Q 60,75 88,25" 
+        stroke="#34D399" strokeWidth="2.2" strokeLinecap="round" className="growth-arrow"
+      />
+      {/* Arrow Tip */}
+      <path 
+        d="M 79,26 L 88,25 L 89,34" 
+        stroke="#34D399" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" 
+      />
     </svg>
   );
 }

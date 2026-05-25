@@ -329,8 +329,8 @@ function TrackItem({ track, index }: { track: Track; index: number }) {
 
         {/* Background art vector representing Track info (fades in on hover) */}
         <div
-          className="absolute bottom-[-15px] right-[-15px] pointer-events-none transition-all duration-500 z-0"
-          style={{ opacity: isHovered ? 0.16 : 0.05 }}
+          className="absolute bottom-[-6px] right-[-6px] md:bottom-[-8px] md:right-[-8px] lg:bottom-[-10px] lg:right-[-10px] pointer-events-none transition-all duration-500 z-0"
+          style={{ opacity: isHovered ? 0.75 : 0.32 }}
         >
           {track.bgArt}
         </div>
@@ -368,7 +368,7 @@ function TrackItem({ track, index }: { track: Track; index: number }) {
 
 function BgArtTrack1() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#F87171" strokeWidth="0.75" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#F87171" strokeWidth="0.75" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Yellow Speech Bubble (drawing and scaling) */}
       <g className="origin-bottom scale-track-node" style={{ transformOrigin: "50px 32px" }}>
         {/* Speech bubble rounded box */}
@@ -400,18 +400,14 @@ function BgArtTrack1() {
       <circle cx="60" cy="55" r="2.2" fill="#F87171" className="scale-track-node origin-center" />
       <path d="M47,60 Q50,63 53,60" stroke="#F87171" strokeWidth="1" strokeLinecap="round" className="scale-track-node origin-center" />
 
-      {/* Metric/Label Badge at the bottom center */}
-      <g transform="translate(50, 88)" className="scale-track-node origin-center" style={{ textAnchor: "middle" }}>
-        <text fill="#F87171" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">AGENTS</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Autonomous Orchestration</text>
-      </g>
+
     </svg>
   );
 }
 
 function BgArtTrack2() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#FBBF24" strokeWidth="0.5" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#FBBF24" strokeWidth="0.5" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Central microchip processor unit */}
       <rect x="35" y="35" width="30" height="30" rx="4.5" strokeWidth="0.75" className="draw-track-path" />
       <text x="50" y="53.5" textAnchor="middle" fill="#FBBF24" fontSize="11" fontWeight="extrabold" letterSpacing="0.03em" className="scale-track-node origin-center">IoT</text>
@@ -448,18 +444,14 @@ function BgArtTrack2() {
       <path d="M 35 58 L 27 58 L 27 68" strokeWidth="0.65" className="draw-track-path" />
       <circle cx="27" cy="68" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
 
-      {/* Metric Badge */}
-      <g transform="translate(54, 76)" className="scale-track-node origin-center">
-        <text fill="#FBBF24" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">Edge</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Real-time Telemetry</text>
-      </g>
+
     </svg>
   );
 }
 
 function BgArtTrack3() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#34D399" strokeWidth="0.5" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#34D399" strokeWidth="0.5" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Overlapping AWS, Azure, GCP clouds representation */}
       <path d="M26,38 C22.5,38 19,34.5 19,30 C19,25.5 22.5,22 27,22 C29,16.5 35,12 42,12 C48.5,12 54,16 56.5,21.5 C59,19.5 62,19.5 64.5,21.5 C67,23.5 69,27 69,30.5 C69,35 65.5,38 61,38 Z" className="draw-track-path" />
       <path d="M42,56 C39.5,56 37,53.5 37,50.5 C37,47.5 39.5,45 42,45 C43,40.5 47,37 52,37 C56.5,37 60,39.5 61.5,43 C63,42 65,42 66.5,43.5 C68,45 69,47.5 69,50.5 C69,53.5 66.5,56 64,56 Z" className="draw-track-path" opacity="0.65" />
@@ -469,18 +461,14 @@ function BgArtTrack3() {
       
       <circle cx="52" cy="45" r="2.5" fill="#34D399" className="scale-track-node origin-center" />
 
-      {/* Metric Badge */}
-      <g transform="translate(56, 78)" className="scale-track-node origin-center">
-        <text fill="#34D399" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">SLA</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Global Load Balancer</text>
-      </g>
+
     </svg>
   );
 }
 
 function BgArtTrack4() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.75" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.75" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Top Right Speech Bubbles */}
       <g className="scale-track-node origin-top-right">
         {/* Back speech bubble */}
@@ -548,18 +536,14 @@ function BgArtTrack4() {
         <circle cx="70" cy="38" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
       </g>
 
-      {/* Label/Metric Badge */}
-      <g transform="translate(50, 88)" className="scale-track-node origin-center" style={{ textAnchor: "middle" }}>
-        <text fill="#A78BFA" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">DATA ENG</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">ETL & Distributed Warehousing</text>
-      </g>
+
     </svg>
   );
 }
 
 function BgArtTrack5() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#E8C5D8" strokeWidth="0.5" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#E8C5D8" strokeWidth="0.5" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Gantt Timeline Grid */}
       <line x1="20" y1="16" x2="20" y2="52" opacity="0.3" />
       <line x1="20" y1="52" x2="80" y2="52" opacity="0.3" />
@@ -573,18 +557,14 @@ function BgArtTrack5() {
 
       <circle cx="74" cy="37.5" r="2" fill="#34D399" className="scale-track-node origin-center" />
 
-      {/* Metric Badge */}
-      <g transform="translate(54, 76)" className="scale-track-node origin-center">
-        <text fill="#E8C5D8" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">Sprint</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Agile Gantt Timeline</text>
-      </g>
+
     </svg>
   );
 }
 
 function BgArtTrack6() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#C4B5FD" strokeWidth="0.5" className="pointer-events-none">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#C4B5FD" strokeWidth="0.5" className="w-[110px] h-[110px] md:w-[130px] md:h-[130px] lg:w-[165px] lg:h-[165px] pointer-events-none origin-bottom-right">
       {/* Central meeting board table */}
       <rect x="36" y="36" width="28" height="20" rx="3.5" strokeWidth="0.75" className="draw-track-path" />
 
@@ -614,11 +594,7 @@ function BgArtTrack6() {
       <path d="M44,76 A6,6 0 0,1 56,76" className="draw-track-path" />
       <path d="M48.5,75.5 L51.5,76.5 M51.5,75.5 L48.5,75.5" stroke="#34D399" strokeWidth="0.8" className="draw-track-path" />
 
-      {/* Metric Badge */}
-      <g transform="translate(56, 82)" className="scale-track-node origin-center">
-        <text fill="#C4B5FD" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">Velocity</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Sprint Iterations</text>
-      </g>
+
     </svg>
   );
 }
