@@ -412,13 +412,13 @@ function CardItem({ card, index }: { card: CardProps; index: number }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       variants={fadeUp}
-      className="relative p-[1.5px] rounded-[17px] overflow-hidden group/outer transition-all duration-500 flex flex-col h-full select-none cursor-pointer"
+      className="relative p-[1.5px] rounded-[17px] overflow-hidden group/outer flex flex-col h-full select-none cursor-pointer"
       style={{
         background: isHovered
           ? "linear-gradient(135deg, rgba(167,139,250,0.7), rgba(196,181,253,0.4), rgba(232,197,216,0.5))"
           : "rgba(167,139,250,0.10)",
         transform: isHovered ? "translateY(-6px)" : "translateY(0px)",
-        transition: "transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 300ms ease",
+        transition: "transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease",
       }}
     >
       {/* Inner card content wrapper - Highly expanded padding and height settings */}
@@ -483,7 +483,7 @@ function CardItem({ card, index }: { card: CardProps; index: number }) {
           </h3>
 
           {/* Description - Set in beautiful, crisp pure white color with high legibility */}
-          <p className="mt-4 text-[14px] font-normal text-white/95 leading-[1.8] relative z-20">
+          <p className="mt-4 text-[14px] font-normal text-white leading-[1.8] relative z-20">
             {card.desc}
           </p>
         </div>

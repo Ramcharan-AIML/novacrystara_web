@@ -69,7 +69,7 @@ export default function Journey() {
   return (
     <section 
       ref={containerRef} 
-      className="bg-[#07080F] py-[100px] relative overflow-hidden select-none"
+      className="bg-[#07080F] pt-[100px] pb-[40px] relative overflow-hidden select-none"
     >
       {/* Dynamic CSS rules for horizontal shimmers, active dividers, and button text sweeps */}
       <style dangerouslySetInnerHTML={{ __html: `
