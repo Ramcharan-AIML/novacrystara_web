@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, VIEWPORT } from "@/lib/motion";
 
@@ -49,7 +50,23 @@ const TEAM: TeamCard[] = [
 
 export default function Team() {
   return (
-    <section className="bg-nc-surface1 py-16 sm:py-20">
+    <section className="bg-nc-surface1 py-16 sm:py-20 overflow-hidden relative">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes spin-conic {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .spinning-ring {
+          opacity: 0;
+          filter: blur(4px);
+          animation: spin-conic 4s linear infinite;
+          transition: opacity 0.3s ease;
+        }
+        .group\\/outer:hover .spinning-ring {
+          opacity: 0.75;
+        }
+      `}} />
+
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
           variants={fadeUp}
@@ -74,36 +91,104 @@ export default function Team() {
           className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2"
         >
           {TEAM.map((m) => (
-            <motion.li
-              key={m.name}
-              variants={fadeUp}
-              className="nc-card nc-card-hover flex gap-5 p-7"
-            >
-              <div
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                style={{ background: m.iconBg, color: m.roleColor }}
-              >
-                {m.icon}
-              </div>
-              <div className="flex-1">
-                <h3 className="text-[16px] font-semibold text-nc-heading sm:text-[17px]">
-                  {m.name}
-                </h3>
-                <p
-                  className="mt-1 text-[12.5px] font-medium"
-                  style={{ color: m.roleColor }}
-                >
-                  {m.role}
-                </p>
-                <p className="mt-3 text-[13px] leading-relaxed text-[#5D5380]">
-                  {m.desc}
-                </p>
-              </div>
-            </motion.li>
+            <TeamCardItem key={m.name} m={m} />
           ))}
         </motion.ul>
       </div>
     </section>
+  );
+}
+
+function TeamCardItem({ m }: { m: TeamCard }) {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLLIElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLLIElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setCoords({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <motion.li
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      variants={fadeUp}
+      className="relative p-[1.5px] rounded-[17px] overflow-hidden group/outer flex flex-col h-full select-none cursor-pointer"
+      style={{
+        background: isHovered
+          ? "linear-gradient(135deg, rgba(167,139,250,0.7), rgba(196,181,253,0.4), rgba(232,197,216,0.5))"
+          : "rgba(167,139,250,0.10)",
+        transform: isHovered ? "translateY(-6px)" : "translateY(0px)",
+        transition: "transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease",
+      }}
+    >
+      <div className="relative w-full h-full rounded-[16px] bg-[#0D0B1C] p-7 overflow-hidden flex gap-5 z-10 flex-1">
+        {/* Spotlight Effect */}
+        <div
+          className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-10"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(220px circle at ${coords.x}px ${coords.y}px, rgba(167,139,250,0.10), transparent)`,
+          }}
+        />
+
+        {/* Top Shimmer Line */}
+        <div
+          className="pointer-events-none absolute top-0 left-0 right-0 h-[1.5px] transition-opacity duration-300 z-10"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.45), transparent)",
+          }}
+        />
+
+        {/* Icon Ring Wrapper (44px x 44px) */}
+        <div className="relative w-11 h-11 flex items-center justify-center rounded-[12px] overflow-hidden shrink-0">
+          {/* Spinning conic ring on hover */}
+          <div
+            className="absolute inset-0 spinning-ring z-0"
+            style={{
+              background: `conic-gradient(from 0deg, transparent 30%, ${m.roleColor} 50%, #C4B5FD 70%, transparent 100%)`,
+            }}
+          />
+          {/* Mask circle (same bg color as card: #0D0B1C) */}
+          <div className="absolute inset-[1px] rounded-[11px] bg-[#0D0B1C] z-10" />
+
+          {/* Actual Icon Box (sits z-index 2 inside) */}
+          <div
+            className="relative w-full h-full rounded-[11px] flex items-center justify-center z-20 transition-all duration-300"
+            style={{
+              background: m.iconBg,
+              color: m.roleColor,
+              boxShadow: isHovered ? `0 0 20px ${m.roleColor}40` : "none",
+            }}
+          >
+            {m.icon}
+          </div>
+        </div>
+
+        <div className="flex-1 relative z-20">
+          <h3 className="text-[16px] font-semibold text-nc-heading sm:text-[17px]">
+            {m.name}
+          </h3>
+          <p
+            className="mt-1 text-[12.5px] font-medium"
+            style={{ color: m.roleColor }}
+          >
+            {m.role}
+          </p>
+          <p className="mt-3 text-[13px] leading-relaxed text-white">
+            {m.desc}
+          </p>
+        </div>
+      </div>
+    </motion.li>
   );
 }
 

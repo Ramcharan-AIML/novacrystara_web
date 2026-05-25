@@ -70,22 +70,22 @@ export default function Navbar() {
           <span
             className="relative flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-md"
           >
-            <span className="relative inline-block h-5.5 w-5.5 sm:h-7 sm:w-7 nc-logo-glow">
+            <span className="relative inline-block h-5 w-5 sm:h-7 sm:w-7 nc-logo-glow">
               <Image
                 src="/assets/main-logo.png"
                 alt="NovaCrystara"
                 fill
-                sizes="(min-width: 640px) 28px, 22px"
+                sizes="(min-width: 640px) 28px, 20px"
                 className="object-contain"
               />
             </span>
           </span>
-          <span className="relative inline-block h-5 w-[120px] sm:h-7.5 sm:w-[180px]">
+          <span className="relative inline-block h-5 w-[120px] sm:h-7 sm:w-[168px]">
             <Image
               src="/assets/name-logo.png"
               alt="NOVACRYSTARA AI LABS LTD"
               fill
-              sizes="(min-width: 640px) 180px, 120px"
+              sizes="(min-width: 640px) 168px, 120px"
               priority
               className="object-contain object-left"
             />
@@ -93,7 +93,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <Link
@@ -115,7 +115,7 @@ export default function Navbar() {
 
         {/* CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <Link href="#cta" className="nc-btn-secondary hidden md:inline-flex">
+          <Link href="#cta" className="nc-btn-secondary hidden lg:inline-flex">
             Partner With Us
             <span aria-hidden>→</span>
           </Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(167,139,250,0.15)] bg-[rgba(167,139,250,0.04)] md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(167,139,250,0.15)] bg-[rgba(167,139,250,0.04)] lg:hidden"
           >
             <span className="relative block h-4 w-5">
               <span
@@ -151,7 +151,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-            className="border-t border-[rgba(167,139,250,0.10)] bg-[rgba(6,7,14,0.96)] backdrop-blur-xl md:hidden"
+            className="border-t border-[rgba(167,139,250,0.10)] bg-[rgba(6,7,14,0.96)] backdrop-blur-xl lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-5 py-4">
               {NAV_LINKS.map((l) => (

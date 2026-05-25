@@ -92,8 +92,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand col */}
           <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2">
-              <span className="relative inline-block h-6 w-6 nc-logo-glow">
+            <div className="flex items-center gap-2.5">
+              <span className="relative inline-block h-6 w-6 shrink-0 nc-logo-glow">
                 <Image
                   src="/assets/main-logo.png"
                   alt="NovaCrystara"
@@ -102,16 +102,22 @@ export default function Footer() {
                   className="object-contain"
                 />
               </span>
-              {/* <span className="text-[11px] font-bold tracking-[0.18em] text-nc-lavender">
-                NOVACRYSTARA AI LABS
-              </span> */}
+              <span className="relative inline-block h-4 w-[96px] sm:h-5 sm:w-[120px] shrink-0">
+                <Image
+                  src="/assets/name-logo.png"
+                  alt="NOVACRYSTARA AI LABS"
+                  fill
+                  sizes="120px"
+                  className="object-contain object-left"
+                />
+              </span>
             </div>
             <p className="mt-4 max-w-[260px] text-[12px] leading-relaxed text-[rgb(152,149,163)]">
               Building AI products. Growing world-class talent. Launching the
               next generation of founders.
             </p>
             <p className="mt-4 text-[11px] text-[rgb(152,149,163)]">
-              contact@novacrystara.ai
+              email@novacrystara.com
             </p>
             <p className="mt-1 text-[11px] text-[rgb(152,149,163)]">
               www.novacrystara.ai
@@ -139,9 +145,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[rgba(167,139,250,0.08)] pt-6 sm:flex-row sm:items-center">
-          <p className="text-[10px] text-nc-lavender">
-            © 2025 NovaCrystara AI Labs Ltd. All rights reserved. London, UK.
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[rgba(255, 255, 255, 0.08)] pt-6 sm:flex-row sm:items-center">
+          <p className="text-[10px] text-white">
+            © 2026 NovaCrystara AI Labs Ltd. All rights reserved. London, UK.
           </p>
           <ul className="flex items-center gap-2">
             {SOCIALS.map((s) => (

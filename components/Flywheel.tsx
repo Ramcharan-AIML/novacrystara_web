@@ -284,7 +284,7 @@ export default function Flywheel() {
       `}} />
 
       {/* Sticky section container */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden py-12">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden py-4 md:py-8 lg:py-12">
         {/* ambient background orbs */}
         <div
           aria-hidden
@@ -305,22 +305,22 @@ export default function Flywheel() {
           {/* Header */}
           <div className="text-center max-w-2xl select-none">
             <p className="nc-eyebrow">HOW IT WORKS</p>
-            <h2 className="mt-3 text-[32px] font-extrabold leading-tight text-nc-heading sm:text-[38px]">
+            <h2 className="mt-1 md:mt-3 text-[26px] sm:text-[32px] md:text-[38px] font-extrabold leading-tight text-nc-heading">
               The NC <span className="grad-text">Business Model</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-[14px] leading-relaxed text-[#7068A0] sm:text-[15px]">
+            <p className="mx-auto mt-2 md:mt-4 max-w-lg text-[13px] md:text-[14.5px] leading-relaxed text-[#7068A0]">
               A self-sustaining ecosystem where clients, talent, and NC grow
               together in one continuous, perfectly aligned loop.
             </p>
           </div>
 
           {/* Interactive diagram area - NO card block container background or border! Seamless integration. */}
-          <div className="w-full max-w-[1100px] mt-8 grid items-center gap-12 lg:grid-cols-[1.3fr_300px] select-none">
+          <div className="w-full max-w-[1100px] mt-4 md:mt-8 grid items-center gap-4 md:gap-8 md:grid-cols-[1.2fr_260px] lg:grid-cols-[1.3fr_300px] select-none">
             
             {/* Left column: SVG viewport diagram (Locks nodes and curves in 100% perfect, unified coordinate system) */}
-            <div className="relative w-full max-w-[1220px] mx-auto aspect-[600/440] diagram-container group/diagram">
+            <div className="relative w-full max-w-[1220px] mx-auto aspect-[30/23] diagram-container group/diagram">
               <svg
-                viewBox="0 0 600 440"
+                viewBox="0 0 600 460"
                 preserveAspectRatio="xMidYMid meet"
                 className="absolute inset-0 w-full h-full pointer-events-none z-0"
               >
@@ -384,7 +384,7 @@ export default function Flywheel() {
                   stroke="#D4AF37"
                   strokeWidth="3.5"
                   strokeDasharray="5 5"
-                  className="hidden lg:block drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+                  className="hidden md:block drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"
                   style={{ pathLength: ncToFounderPathLength }}
                 />
 
@@ -395,7 +395,7 @@ export default function Flywheel() {
                   stroke="#D4AF37"
                   strokeWidth="3.5"
                   strokeDasharray="5 5"
-                  className="block lg:hidden drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+                  className="block md:hidden drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"
                   style={{ pathLength: ncToFounderPathLength }}
                 />
 
@@ -477,7 +477,7 @@ export default function Flywheel() {
                 </g>
 
                 {/* Gold Arrow Head (Desktop) */}
-                <g transform="translate(595, 260) rotate(-60)" className="hidden lg:block">
+                <g transform="translate(595, 260) rotate(-60)" className="hidden md:block">
                   <motion.path
                     d="M -16 -11 L 6.5 0 L -16 11 Z"
                     fill="#D4AF37"
@@ -486,7 +486,7 @@ export default function Flywheel() {
                 </g>
 
                 {/* Gold Arrow Head (Mobile/Tablet) */}
-                <g transform="translate(460, 432) rotate(90)" className="block lg:hidden">
+                <g transform="translate(460, 432) rotate(90)" className="block md:hidden">
                   <motion.path
                     d="M -16 -11 L 6.5 0 L -16 11 Z"
                     fill="#D4AF37"
@@ -529,7 +529,7 @@ export default function Flywheel() {
                       <div className="relative z-10 flex flex-col items-center text-center px-1 select-none">
                         {/* Briefcase/Building Icon with Dynamic Pulsing Drop Shadow */}
                         <svg
-                          className="w-6.5 h-6.5 text-[#C4B5FD] transition-all duration-300"
+                          className="w-6 h-6 text-[#C4B5FD] transition-all duration-300"
                           style={{
                             filter: hoveredNode === "clients" ? "drop-shadow(0 0 8px rgba(196,181,253,0.7))" : "none"
                           }}
@@ -584,7 +584,7 @@ export default function Flywheel() {
                       <div className="relative z-10 flex flex-col items-center text-center px-1 select-none">
                         {/* Purple solid circular NC logo badge with Dynamic Shadow */}
                         <div 
-                          className="w-7.5 h-7.5 flex items-center justify-center bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] rounded-full border border-purple-400/35 text-[10px] font-extrabold text-white mb-0.5 shadow-md transition-all duration-300"
+                          className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] rounded-full border border-purple-400/35 text-[10px] font-extrabold text-white mb-0.5 shadow-md transition-all duration-300"
                           style={{
                             boxShadow: hoveredNode === "nc" ? "0 0 12px rgba(124,58,237,0.7)" : "0 4px 6px rgba(0,0,0,0.3)"
                           }}
@@ -632,7 +632,7 @@ export default function Flywheel() {
                       <div className="relative z-10 flex flex-col items-center text-center px-1 select-none">
                         {/* Users Icon with Pulsing Glow Shadow */}
                         <svg
-                          className="w-6.5 h-6.5 text-[#A78BFA] transition-all duration-300"
+                          className="w-6 h-6 text-[#A78BFA] transition-all duration-300"
                           style={{
                             filter: hoveredNode === "builders" ? "drop-shadow(0 0 8px rgba(167,139,250,0.7))" : "none"
                           }}
@@ -649,7 +649,7 @@ export default function Flywheel() {
                           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                         <span className="mt-1.5 text-[11px] font-extrabold tracking-wider text-nc-heading uppercase leading-none">
-                          BUILDERS
+                          INTERNS
                         </span>
                         <span className="mt-1 text-[7.5px] text-[#A29EB3] max-w-[90px] leading-tight font-medium">
                           Gain income + skills
@@ -692,7 +692,7 @@ export default function Flywheel() {
                   textAnchor="middle"
                 >
                   <textPath xlinkHref="#text-path-builders-clients" href="#text-path-builders-clients" startOffset="50%">
-                    Talent delivers
+                    Talent deliver
                   </textPath>
                 </motion.text>
               </svg>
