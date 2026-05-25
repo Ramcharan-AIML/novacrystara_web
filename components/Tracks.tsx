@@ -368,30 +368,42 @@ function TrackItem({ track, index }: { track: Track; index: number }) {
 
 function BgArtTrack1() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#F87171" strokeWidth="0.5" className="pointer-events-none">
-      {/* Central Agent Node */}
-      <circle cx="50" cy="50" r="5" fill="#F87171" className="scale-track-node origin-center" />
+    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#F87171" strokeWidth="0.75" className="pointer-events-none">
+      {/* Yellow Speech Bubble (drawing and scaling) */}
+      <g className="origin-bottom scale-track-node" style={{ transformOrigin: "50px 32px" }}>
+        {/* Speech bubble rounded box */}
+        <rect x="36" y="10" width="28" height="18" rx="4" stroke="#F87171" strokeWidth="0.8" fill="rgba(248,113,113,0.08)" className="draw-track-path" />
+        {/* Speech bubble tail pointer */}
+        <path d="M46,28 L50,33 L54,28" stroke="#F87171" strokeWidth="0.8" fill="none" className="draw-track-path" />
+      </g>
 
-      {/* Surrounding Helper Agent Nodes */}
-      <circle cx="28" cy="35" r="3.5" strokeWidth="0.5" />
-      <circle cx="72" cy="38" r="3.5" strokeWidth="0.5" />
-      <circle cx="45" cy="72" r="3.5" strokeWidth="0.5" />
+      {/* Robot Head Structure */}
+      {/* Left antenna */}
+      <path d="M22,54 L25,54" stroke="#F87171" strokeWidth="0.85" className="draw-track-path" />
+      <rect x="18" y="42" width="4" height="24" rx="2" stroke="#F87171" strokeWidth="0.8" fill="rgba(248,113,113,0.05)" className="draw-track-path" />
+      
+      {/* Right antenna */}
+      <path d="M75,54 L78,54" stroke="#F87171" strokeWidth="0.85" className="draw-track-path" />
+      <rect x="78" y="42" width="4" height="24" rx="2" stroke="#F87171" strokeWidth="0.8" fill="rgba(248,113,113,0.05)" className="draw-track-path" />
 
-      {/* Curved connector paths between agents */}
-      <path d="M50,50 Q36,38 28,35" className="draw-track-path" />
-      <path d="M50,50 Q64,40 72,38" className="draw-track-path" />
-      <path d="M50,50 Q46,64 45,72" className="draw-track-path" />
+      {/* Main outer robot head box */}
+      <rect x="25" y="38" width="50" height="36" rx="10" stroke="#F87171" strokeWidth="1" fill="rgba(248,113,113,0.04)" className="draw-track-path" />
 
-      <path d="M28,35 Q50,22 72,38" strokeDasharray="2 2" opacity="0.4" />
-      <path d="M72,38 Q60,65 45,72" strokeDasharray="2 2" opacity="0.4" />
+      {/* Top accent hair stripe */}
+      <rect x="44" y="38" width="12" height="7" rx="1" stroke="#F87171" strokeWidth="0.75" fill="rgba(248,113,113,0.3)" className="scale-track-node origin-top" />
 
-      {/* Processor chip representation inside core */}
-      <rect x="44" y="44" width="12" height="12" rx="1.5" strokeWidth="0.4" opacity="0.3" />
+      {/* Inner screen glass box */}
+      <rect x="30" y="46" width="40" height="22" rx="6" stroke="#F87171" strokeWidth="0.8" fill="rgba(248,113,113,0.08)" className="draw-track-path" />
 
-      {/* Metric Badge */}
-      <g transform="translate(56, 80)" className="scale-track-node origin-center">
-        <text fill="#F87171" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">100%</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Autonomous</text>
+      {/* Screen elements (eyes and mouth) */}
+      <circle cx="40" cy="55" r="2.2" fill="#F87171" className="scale-track-node origin-center" />
+      <circle cx="60" cy="55" r="2.2" fill="#F87171" className="scale-track-node origin-center" />
+      <path d="M47,60 Q50,63 53,60" stroke="#F87171" strokeWidth="1" strokeLinecap="round" className="scale-track-node origin-center" />
+
+      {/* Metric/Label Badge at the bottom center */}
+      <g transform="translate(50, 88)" className="scale-track-node origin-center" style={{ textAnchor: "middle" }}>
+        <text fill="#F87171" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">AGENTS</text>
+        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Autonomous Orchestration</text>
       </g>
     </svg>
   );
@@ -400,19 +412,41 @@ function BgArtTrack1() {
 function BgArtTrack2() {
   return (
     <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#FBBF24" strokeWidth="0.5" className="pointer-events-none">
-      {/* Signal Telemetry concentric waves */}
-      <circle cx="35" cy="65" r="3" fill="#FBBF24" className="scale-track-node origin-center" />
-      <path d="M35,65 A 14 14 0 0 1 47,53" strokeWidth="0.65" className="draw-track-path" />
-      <path d="M35,65 A 26 26 0 0 1 57,43" strokeWidth="0.65" className="draw-track-path" />
-      <path d="M35,65 A 38 38 0 0 1 67,33" strokeWidth="0.65" className="draw-track-path" opacity="0.5" />
+      {/* Central microchip processor unit */}
+      <rect x="35" y="35" width="30" height="30" rx="4.5" strokeWidth="0.75" className="draw-track-path" />
+      <text x="50" y="53.5" textAnchor="middle" fill="#FBBF24" fontSize="11" fontWeight="extrabold" letterSpacing="0.03em" className="scale-track-node origin-center">IoT</text>
 
-      {/* IoT Device circles connected to edge */}
-      <circle cx="47" cy="53" r="2" fill="#FBBF24" className="scale-track-node origin-center" />
-      <circle cx="57" cy="43" r="2" fill="#FBBF24" className="scale-track-node origin-center" />
+      {/* 8 branching circuit path lines & terminal node dots representing connection pins */}
+      {/* Top pins */}
+      <path d="M 50 35 L 50 20" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="50" cy="20" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+      
+      <path d="M 42 35 L 42 24 L 30 24" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="30" cy="24" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
 
-      {/* Device Lock Symbol representation */}
-      <rect x="68" y="24" width="7" height="6" rx="1" strokeWidth="0.5" />
-      <path d="M70,24 V21 A 2 2 0 0 1 73,21 V24" strokeWidth="0.5" />
+      <path d="M 58 35 L 58 24 L 70 24" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="70" cy="24" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      {/* Right pins */}
+      <path d="M 65 50 L 78 50" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="78" cy="50" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      <path d="M 65 42 L 72 42 L 72 32" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="72" cy="32" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      {/* Bottom pins */}
+      <path d="M 50 65 L 50 80" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="50" cy="80" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      <path d="M 58 65 L 58 74 L 68 74" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="68" cy="74" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      {/* Left pins */}
+      <path d="M 35 50 L 22 50" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="22" cy="50" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
+
+      <path d="M 35 58 L 27 58 L 27 68" strokeWidth="0.65" className="draw-track-path" />
+      <circle cx="27" cy="68" r="1.8" fill="#FBBF24" className="scale-track-node origin-center" />
 
       {/* Metric Badge */}
       <g transform="translate(54, 76)" className="scale-track-node origin-center">
@@ -446,32 +480,78 @@ function BgArtTrack3() {
 
 function BgArtTrack4() {
   return (
-    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.5" className="pointer-events-none">
-      {/* DB stacks */}
-      <g transform="translate(18, 14)">
-        {/* Top Disk */}
-        <ellipse cx="12" cy="6" rx="7.5" ry="3" strokeWidth="0.55" className="draw-track-path" />
-        <line x1="4.5" y1="6" x2="4.5" y2="13" strokeWidth="0.55" />
-        <line x1="19.5" y1="6" x2="19.5" y2="13" strokeWidth="0.55" />
-        <path d="M4.5,13 C4.5,16 19.5,16 19.5,13" strokeWidth="0.55" className="draw-track-path" />
+    <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#A78BFA" strokeWidth="0.75" className="pointer-events-none">
+      {/* Top Right Speech Bubbles */}
+      <g className="scale-track-node origin-top-right">
+        {/* Back speech bubble */}
+        <rect x="52" y="10" width="22" height="15" rx="3" stroke="#A78BFA" strokeWidth="0.7" fill="rgba(167,139,250,0.05)" className="draw-track-path" />
+        <path d="M57,25 L57,29 L62,25" stroke="#A78BFA" strokeWidth="0.7" fill="none" className="draw-track-path" />
+        <line x1="57" y1="14" x2="69" y2="14" stroke="#A78BFA" strokeWidth="0.55" opacity="0.5" />
+        <line x1="57" y1="18" x2="65" y2="18" stroke="#A78BFA" strokeWidth="0.55" opacity="0.5" />
 
-        {/* Middle Disk */}
-        <line x1="4.5" y1="13" x2="4.5" y2="20" strokeWidth="0.55" />
-        <line x1="19.5" y1="13" x2="19.5" y2="20" strokeWidth="0.55" />
-        <path d="M4.5,20 C4.5,23 19.5,23 19.5,20" strokeWidth="0.55" className="draw-track-path" />
+        {/* Front speech bubble */}
+        <rect x="42" y="16" width="20" height="13" rx="2.5" stroke="#A78BFA" strokeWidth="0.75" fill="rgba(167,139,250,0.12)" className="draw-track-path" />
+        <path d="M53,29 L53,33 L49,29" stroke="#A78BFA" strokeWidth="0.75" fill="none" className="draw-track-path" />
+        <line x1="47" y1="20" x2="57" y2="20" stroke="#A78BFA" strokeWidth="0.6" />
+        <line x1="47" y1="24" x2="53" y2="24" stroke="#A78BFA" strokeWidth="0.6" />
       </g>
 
-      {/* Dotted Stream flow */}
-      <path d="M38,24 C45,24 48,32 48,42" strokeDasharray="2 3" className="scroll-track-dash" />
-      <circle cx="48" cy="42" r="2" fill="#A78BFA" className="scale-track-node origin-center" />
+      {/* Person (Top-Left) */}
+      <g className="scale-track-node origin-center" style={{ transformOrigin: "26px 26px" }}>
+        {/* Head */}
+        <circle cx="26" cy="20" r="5" stroke="#A78BFA" strokeWidth="0.85" fill="rgba(167,139,250,0.1)" className="draw-track-path" />
+        {/* Hair block */}
+        <path d="M21,20 C21,15 31,15 31,20 C29,18 23,18 21,20 Z" fill="#A78BFA" />
+        {/* Shoulders */}
+        <path d="M14,38 L14,33 C14,29 38,29 38,33 L38,38 Z" stroke="#A78BFA" strokeWidth="0.85" fill="rgba(167,139,250,0.06)" className="draw-track-path" />
+        {/* Collar & Tie */}
+        <path d="M23,29 L26,33 L29,29" stroke="#A78BFA" strokeWidth="0.7" fill="none" />
+        <path d="M25,33 L27,33 L28,38 L24,38 Z" fill="#A78BFA" opacity="0.8" />
+      </g>
 
-      {/* Pipeline node representation */}
-      <rect x="42" y="42" width="12" height="7" rx="1" strokeWidth="0.4" opacity="0.4" />
+      {/* Bottom Left Gear */}
+      <g className="scale-track-node origin-center" style={{ transformOrigin: "26px 60px" }}>
+        {/* Central hub */}
+        <circle cx="26" cy="60" r="5.5" stroke="#A78BFA" strokeWidth="0.95" fill="rgba(167,139,250,0.1)" className="draw-track-path" />
+        <circle cx="26" cy="60" r="2" fill="#A78BFA" />
+        {/* 8 Gear teeth */}
+        <path d="M25,51 L27,51 L27,54 L25,54 Z" fill="#A78BFA" />
+        <path d="M25,66 L27,66 L27,69 L25,69 Z" fill="#A78BFA" />
+        <path d="M17,59 L17,61 L20,61 L20,59 Z" fill="#A78BFA" />
+        <path d="M32,59 L32,61 L35,61 L35,59 Z" fill="#A78BFA" />
+        {/* Diagonals */}
+        <path d="M19,53 L21,55 L22,54 L20,52 Z" fill="#A78BFA" />
+        <path d="M31,65 L33,67 L34,66 L32,64 Z" fill="#A78BFA" />
+        <path d="M19,67 L21,65 L20,64 L18,66 Z" fill="#A78BFA" />
+        <path d="M31,53 L33,55 L32,56 L30,54 Z" fill="#A78BFA" />
+      </g>
 
-      {/* Metric Badge */}
-      <g transform="translate(56, 76)" className="scale-track-node origin-center">
-        <text fill="#A78BFA" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">Airflow</text>
-        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Spark DAG Pipelines</text>
+      {/* Bar Chart (Bottom Right) */}
+      <g className="scale-track-bar origin-bottom" style={{ transformOrigin: "60px 72px" }}>
+        {/* Bar 1 */}
+        <rect x="52" y="52" width="4" height="20" rx="1" stroke="#A78BFA" strokeWidth="0.75" fill="rgba(167,139,250,0.08)" />
+        {/* Bar 2 */}
+        <rect x="60" y="44" width="4" height="28" rx="1" stroke="#A78BFA" strokeWidth="0.75" fill="rgba(167,139,250,0.15)" />
+        {/* Bar 3 */}
+        <rect x="68" y="36" width="4" height="36" rx="1" stroke="#A78BFA" strokeWidth="0.75" fill="rgba(167,139,250,0.3)" />
+      </g>
+
+      {/* Line Chart connecting them */}
+      <g>
+        {/* Path line */}
+        <path d="M33,59 L43,44 L53,52 L62,38 L70,38" stroke="#A78BFA" strokeWidth="1" strokeLinecap="round" className="draw-track-path" />
+        {/* Nodes */}
+        <circle cx="33" cy="59" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
+        <circle cx="43" cy="44" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
+        <circle cx="53" cy="52" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
+        <circle cx="62" cy="38" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
+        <circle cx="70" cy="38" r="1.8" fill="#A78BFA" className="scale-track-node origin-center" />
+      </g>
+
+      {/* Label/Metric Badge */}
+      <g transform="translate(50, 88)" className="scale-track-node origin-center" style={{ textAnchor: "middle" }}>
+        <text fill="#A78BFA" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">DATA ENG</text>
+        <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">ETL & Distributed Warehousing</text>
       </g>
     </svg>
   );
@@ -505,26 +585,37 @@ function BgArtTrack5() {
 function BgArtTrack6() {
   return (
     <svg width="220" height="220" viewBox="0 0 100 100" fill="none" stroke="#C4B5FD" strokeWidth="0.5" className="pointer-events-none">
-      {/* Iteration circle loop */}
-      <path 
-        d="M 50,45 A 18,18 0 1,1 68,45 A 18,18 0 0,1 50,45" 
-        strokeWidth="0.7" 
-        strokeDasharray="4 2" 
-        className="scroll-track-dash" 
-      />
-      
-      {/* Loop Arrowhead */}
-      <path d="M 68,42 L 72,46 L 68,50 Z" fill="#C4B5FD" className="scale-track-node origin-center" />
+      {/* Central meeting board table */}
+      <rect x="36" y="36" width="28" height="20" rx="3.5" strokeWidth="0.75" className="draw-track-path" />
 
-      {/* Burn-down grid behind loop */}
-      <line x1="22" y1="20" x2="22" y2="48" opacity="0.25" />
-      <line x1="22" y1="48" x2="52" y2="48" opacity="0.25" />
-      <path d="M22,20 L32,32 L42,38 L52,48" opacity="0.3" strokeWidth="0.6" className="draw-track-path" />
+      {/* Five team members positioned around the table (heads, shoulders, and bowties) */}
+      {/* Member 1 (Top Left) */}
+      <circle cx="40" cy="20" r="3.2" className="scale-track-node origin-center" />
+      <path d="M34,28 A6,6 0 0,1 46,28" className="draw-track-path" />
+      <path d="M38.5,27.5 L41.5,28.5 M41.5,27.5 L38.5,28.5" stroke="#C4B5FD" strokeWidth="0.8" className="draw-track-path" />
 
-      <circle cx="52" cy="48" r="1.5" fill="#34D399" className="scale-track-node origin-center" />
+      {/* Member 2 (Top Right) */}
+      <circle cx="60" cy="20" r="3.2" className="scale-track-node origin-center" />
+      <path d="M54,28 A6,6 0 0,1 66,28" className="draw-track-path" />
+      <path d="M58.5,27.5 L61.5,28.5 M61.5,27.5 L58.5,28.5" stroke="#C4B5FD" strokeWidth="0.8" className="draw-track-path" />
+
+      {/* Member 3 (Left) */}
+      <circle cx="24" cy="42" r="3.2" className="scale-track-node origin-center" />
+      <path d="M18,50 A6,6 0 0,1 30,50" className="draw-track-path" />
+      <path d="M22.5,49.5 L25.5,50.5 M25.5,49.5 L22.5,50.5" stroke="#C4B5FD" strokeWidth="0.8" className="draw-track-path" />
+
+      {/* Member 4 (Right) */}
+      <circle cx="76" cy="42" r="3.2" className="scale-track-node origin-center" />
+      <path d="M70,50 A6,6 0 0,1 82,50" className="draw-track-path" />
+      <path d="M74.5,49.5 L77.5,50.5 M77.5,49.5 L74.5,50.5" stroke="#C4B5FD" strokeWidth="0.8" className="draw-track-path" />
+
+      {/* Member 5 (Bottom / Scrum Master) */}
+      <circle cx="50" cy="68" r="3.2" className="scale-track-node origin-center" />
+      <path d="M44,76 A6,6 0 0,1 56,76" className="draw-track-path" />
+      <path d="M48.5,75.5 L51.5,76.5 M51.5,75.5 L48.5,75.5" stroke="#34D399" strokeWidth="0.8" className="draw-track-path" />
 
       {/* Metric Badge */}
-      <g transform="translate(56, 76)" className="scale-track-node origin-center">
+      <g transform="translate(56, 82)" className="scale-track-node origin-center">
         <text fill="#C4B5FD" fontSize="9.5" fontWeight="extrabold" letterSpacing="0.05em">Velocity</text>
         <text fill="#7068A0" fontSize="5" fontWeight="semibold" y="7">Sprint Iterations</text>
       </g>
