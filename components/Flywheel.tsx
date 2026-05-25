@@ -13,6 +13,8 @@ function ThreeNoiseCircle({ theme, isHovered = false }: { theme: "clients" | "nc
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isHoveredRef = useRef(isHovered);
 
+
+  
   // Sync hover state ref for smooth visual transitions without resetting the animation loop
   useEffect(() => {
     isHoveredRef.current = isHovered;
