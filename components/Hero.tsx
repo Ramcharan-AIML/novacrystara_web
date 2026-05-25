@@ -170,7 +170,7 @@ function StatsBar() {
   return (
     <div
       ref={ref}
-      className="absolute inset-x-0 bottom-2 z-20 px-3 sm:bottom-4 sm:px-8"
+      className="absolute inset-x-0 bottom-0 z-20 px-3 sm:bottom-2 sm:px-8"
     >
       <div
         className="mx-auto max-w-4xl rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] backdrop-blur-md overflow-hidden"
@@ -185,7 +185,7 @@ function StatsBar() {
             <div
               key={s.label}
               className={[
-                "flex flex-col items-center justify-center text-center py-5 px-2 sm:py-5 sm:px-3",
+                "flex flex-col items-center justify-center text-center py-3 px-2 sm:py-4 sm:px-3",
                 "sm:flex-row sm:text-left sm:gap-3",
                 // Right border on left-column items (mobile), and on all except last (desktop)
                 i % 2 === 0 ? "border-r border-r-[rgba(167,139,250,0.10)]" : "",
@@ -196,10 +196,10 @@ function StatsBar() {
               ].filter(Boolean).join(" ")}
             >
               {/* Icon — centered above text on mobile, left of text on desktop */}
-              <span className="text-nc-violet/80 mb-2 sm:mb-0 shrink-0">{s.icon}</span>
+              <span className="text-nc-violet/80 mb-1 sm:mb-0 shrink-0">{s.icon}</span>
               {/* Text block */}
               <div className="flex flex-col items-center sm:items-start">
-                <span className="text-[22px] font-bold leading-none text-nc-lavender sm:text-[28px]">
+                <span className="text-[19px] font-bold leading-none text-nc-lavender sm:text-[28px]">
                   {s.display ?? <CountUpValue to={s.to} active={inView && !s.display} />}
                   {s.suffix ?? ""}
                 </span>
