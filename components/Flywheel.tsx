@@ -14,7 +14,7 @@ function ThreeNoiseCircle({ theme, isHovered = false }: { theme: "clients" | "nc
   const isHoveredRef = useRef(isHovered);
 
 
-  
+
   // Sync hover state ref for smooth visual transitions without resetting the animation loop
   useEffect(() => {
     isHoveredRef.current = isHovered;
@@ -64,6 +64,8 @@ function ThreeNoiseCircle({ theme, isHovered = false }: { theme: "clients" | "nc
       edgeColor = { r: 139, g: 92, b: 246 };   // Violet for builders
     }
 
+
+    
     const radius = Math.min(width, height) / 2 * 0.95;
 
     for (let i = 0; i < COUNT; i++) {
