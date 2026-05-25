@@ -44,6 +44,7 @@ export default function CTA() {
               alt="NovaCrystara"
               fill
               sizes="(min-width: 640px) 72px, 60px"
+              loading="lazy"
               className="object-contain"
             />
           </div>

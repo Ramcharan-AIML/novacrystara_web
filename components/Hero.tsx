@@ -162,7 +162,7 @@ function StatsBar() {
 
   const stats: Stat[] = [
     { to: 98, suffix: "%", label: "DELIVERY RATE", icon: <IconCheck /> },
-    { to: 150, suffix: "+", label: "BUILDERS TRAINED", icon: <IconUsers /> },
+    { to: 150, suffix: "+", label: "INTERNS TRAINED", icon: <IconUsers /> },
     { to: 15, suffix: "+", label: "STARTUPS LAUNCHED", icon: <IconRocket /> },
     { to: 0, display: "London", label: "GLOBAL HQ", icon: <IconPin /> },
   ];
@@ -170,39 +170,54 @@ function StatsBar() {
   return (
     <div
       ref={ref}
-      className="absolute inset-x-0 bottom-2 z-20 px-4 sm:bottom-4 sm:px-8"
+      className="absolute inset-x-0 bottom-2 z-20 px-3 sm:bottom-4 sm:px-8"
     >
       <div
-        className="mx-auto grid max-w-4xl grid-cols-2 divide-x divide-[rgba(167,139,250,0.08)] rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] px-3 py-5 backdrop-blur-md sm:grid-cols-4 sm:px-8"
+        className="mx-auto max-w-4xl rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] backdrop-blur-md overflow-hidden"
         style={{
           boxShadow:
             "0 12px 40px rgba(0,0,0,0.45), 0 0 24px rgba(124,58,237,0.10)",
         }}
       >
-        {stats.map((s) => (
-          <StatItem key={s.label} stat={s} active={inView} />
-        ))}
+        {/* Mobile: 2×2 grid | Desktop: 1×4 row */}
+        <div className="grid grid-cols-2 sm:grid-cols-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={[
+                "flex flex-col items-center justify-center text-center py-5 px-2 sm:py-5 sm:px-3",
+                "sm:flex-row sm:text-left sm:gap-3",
+                // Right border on left-column items (mobile), and on all except last (desktop)
+                i % 2 === 0 ? "border-r border-r-[rgba(167,139,250,0.10)]" : "",
+                i === 1 ? "sm:border-r sm:border-r-[rgba(167,139,250,0.10)]" : "",
+                i === 2 ? "sm:border-r sm:border-r-[rgba(167,139,250,0.10)]" : "",
+                // Bottom border on top row (mobile only)
+                i < 2 ? "border-b border-b-[rgba(167,139,250,0.10)] sm:border-b-0" : "",
+              ].filter(Boolean).join(" ")}
+            >
+              {/* Icon — centered above text on mobile, left of text on desktop */}
+              <span className="text-nc-violet/80 mb-2 sm:mb-0 shrink-0">{s.icon}</span>
+              {/* Text block */}
+              <div className="flex flex-col items-center sm:items-start">
+                <span className="text-[22px] font-bold leading-none text-nc-lavender sm:text-[28px]">
+                  {s.display ?? <CountUpValue to={s.to} active={inView && !s.display} />}
+                  {s.suffix ?? ""}
+                </span>
+                <span className="mt-1 text-[8px] tracking-[0.14em] text-[#7b6f9d] sm:text-[10px] sm:tracking-[0.18em] whitespace-nowrap">
+                  {s.label}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
-  const n = useCountUp({ to: stat.to, startWhen: active && !stat.display });
-  return (
-    <div className="flex items-center justify-center gap-3 px-2 py-2">
-      <span className="text-nc-violet/80">{stat.icon}</span>
-      <div className="flex flex-col">
-        <span className="text-[22px] font-bold leading-none text-nc-lavender sm:text-[28px]">
-          {stat.display ?? n}
-          {stat.suffix ?? ""}
-        </span>
-        <span className="mt-1 text-[9px] tracking-[0.18em] text-[#7b6f9d] sm:text-[10px]">
-          {stat.label}
-        </span>
-      </div>
-    </div>
-  );
+function CountUpValue({ to, active }: { to: number; active: boolean }) {
+  const n = useCountUp({ to, startWhen: active });
+  return <>{n}</>;
 }
 
 /* SVG icons */

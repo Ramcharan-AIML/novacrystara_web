@@ -99,6 +99,7 @@ export default function Footer() {
                   alt="NovaCrystara"
                   fill
                   sizes="24px"
+                  loading="lazy"
                   className="object-contain"
                 />
               </span>
@@ -107,7 +108,8 @@ export default function Footer() {
                   src="/assets/name-logo.png"
                   alt="NOVACRYSTARA AI LABS"
                   fill
-                  sizes="120px"
+                  sizes="(min-width: 640px) 120px, 96px"
+                  loading="lazy"
                   className="object-contain object-left"
                 />
               </span>

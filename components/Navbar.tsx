@@ -76,6 +76,7 @@ export default function Navbar() {
                 alt="NovaCrystara"
                 fill
                 sizes="(min-width: 640px) 28px, 20px"
+                priority
                 className="object-contain"
               />
             </span>
