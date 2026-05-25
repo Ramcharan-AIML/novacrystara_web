@@ -9,8 +9,6 @@
 html,
 body {
   background-color: #06070E;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2236%22%20height%3D%2236%22%20viewBox%3D%220%200%2036%2036%22%3E%3Cpath%20d%3D%22M18%2C15L18.5%2C17.5L21%2C18L18.5%2C18.5L18%2C21L17.5%2C18.5L15%2C18L17.5%2C17.5Z%22%20fill%3D%22%23a78bfa%22%20fill-opacity%3D%220.08%22%2F%3E%3C%2Fsvg%3E");
-  background-size: 36px 36px;
   color: #94A3B8;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
@@ -121,16 +119,8 @@ body {
 }
 
 /* ============================================================
-   Dot grid background (used by hero & CTA, and globally on sections)
+   Dot grid background removed for a sleek minimalist look
    ============================================================ */
-.nc-dot-grid,
-section.bg-nc-base,
-section.bg-nc-surface1,
-section.bg-nc-surface2 {
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2236%22%20height%3D%2236%22%20viewBox%3D%220%200%2036%2036%22%3E%3Cpath%20d%3D%22M18%2C15L18.5%2C17.5L21%2C18L18.5%2C18.5L18%2C21L17.5%2C18.5L15%2C18L17.5%2C17.5Z%22%20fill%3D%22%23a78bfa%22%20fill-opacity%3D%220.08%22%2F%3E%3C%2Fsvg%3E") !important;
-  background-size: 36px 36px !important;
-  background-repeat: repeat !important;
-}
 
 /* ============================================================
    Section divider helper

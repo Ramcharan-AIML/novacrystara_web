@@ -52,36 +52,43 @@ const SOCIALS = [
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
 
-  // Track the scroll of the footer container (0 = entering viewport, 1 = exactly centered in window)
+  // Track the scroll of the footer container (0 = entering viewport, 1 = bottom of footer touches bottom)
   const { scrollYProgress } = useScroll({
     target: footerRef,
-    offset: ["start end", "center center"],
+    offset: ["start end", "end end"],
   });
   // Maps scroll progress to vertical position (reveals from slot) and opacity cinematically
-  // Starts completely hidden (100%) at viewport bottom, slides up to resting position (0%) at window center
-  const watermarkY = useTransform(scrollYProgress, [0.0, 1.0], ["100%", "0%"], {
+  // Finishes translation early at 0.55 progress so that it is fully revealed and settled without bottom clipping
+  const watermarkY = useTransform(scrollYProgress, [0.0, 0.55], ["35%", "0%"], {
     ease: easeOut,
   });
-  const watermarkOpacity = useTransform(scrollYProgress, [0.0, 0.75], [0, 1]);
+  const watermarkOpacity = useTransform(scrollYProgress, [0.0, 0.45], [0, 1]);
 
 
 
   return (
-    <footer className="border-t border-[rgba(167,139,250,0.07)] bg-[#04050B] px-5 py-14 sm:px-8 sm:py-16">
-      <div className="mx-auto max-w-6xl">
-        {/* Giant premium brand signature with cinematic scroll mask-reveal */}
-        <div
-          ref={footerRef}
-          className="mb-14 select-none overflow-hidden text-center sm:mb-16 relative pb-6"
+    <footer className="border-t border-[rgba(167,139,250,0.07)] bg-[#04050B] pt-4 pb-14 sm:pt-6 sm:pb-16 relative overflow-hidden">
+      {/* Giant premium brand signature with cinematic scroll mask-reveal spanning full width */}
+      <div
+        ref={footerRef}
+        className="w-full mb-4 select-none overflow-hidden text-center relative flex justify-center"
+      >
+        <motion.div
+          style={{ y: watermarkY, opacity: watermarkOpacity }}
+          className="relative w-[90vw] max-w-[1400px] h-[16vw] min-h-[120px] max-h-[280px] select-none"
         >
-          <motion.h2
-            style={{ y: watermarkY, opacity: watermarkOpacity }}
-            className="text-[11vw] font-extrabold tracking-tighter leading-none bg-gradient-to-b from-[#C4B5FD] via-[#A78BFA] to-[#7C3AED] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(167,139,250,0.25)] select-none pb-2"
-          >
-            NovaCrystara
-          </motion.h2>
-        </div>
+          <Image
+            src="/assets/Novacrystara_pencil_sketch.png"
+            alt="NovaCrystara Pencil Sketch Signature"
+            fill
+            sizes="100vw"
+            className="object-contain pointer-events-none filter drop-shadow-[0_0_35px_rgba(167,139,250,0.3)] mix-blend-screen"
+            priority
+          />
+        </motion.div>
+      </div>
 
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand col */}
           <div className="col-span-2 lg:col-span-1">
