@@ -516,8 +516,8 @@ function CardItem({ card, index }: { card: CardProps; index: number }) {
                 fontSize: "125px",
                 letterSpacing: "-0.06em",
                 fill: isHovered
-                  ? `rgba(${hexToRgb(card.accent)}, 0.08)`
-                  : `rgba(${hexToRgb(card.accent)}, 0.035)`,
+                  ? `rgba(${hexToRgb(card.accent)}, 0.18)`
+                  : `rgba(${hexToRgb(card.accent)}, 0.09)`,
               }}
             >
               {card.num}

@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen w-full flex-col overflow-hidden bg-nc-base"
+      className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-nc-base"
     >
       {/* Layer 0: background image — focal point shifted up so the planet curve sits higher */}
       <Image
@@ -50,7 +50,7 @@ export default function Hero() {
       />
 
       {/* Layer 10: content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 pb-56 pt-24 text-center sm:px-8 sm:pb-60 sm:pt-28">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 pb-44 pt-24 text-center sm:px-8 sm:pb-60 sm:pt-28">
         {/* <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -170,7 +170,7 @@ function StatsBar() {
   return (
     <div
       ref={ref}
-      className="absolute inset-x-0 bottom-0 z-20 px-3 sm:bottom-2 sm:px-8"
+      className="absolute inset-x-0 -bottom-8 z-20 px-3 sm:bottom-2 sm:px-8"
     >
       <div
         className="mx-auto max-w-4xl rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[rgba(8,8,18,0.65)] backdrop-blur-md overflow-hidden"

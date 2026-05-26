@@ -175,7 +175,7 @@ export default function Journey() {
                   }}
                 >
                   {/* Mobile Big Number (hidden on desktop) */}
-                  <div className="md:hidden text-[32px] font-extrabold mb-1" style={{ color: "rgba(167,139,250,0.1)" }}>
+                  <div className="md:hidden text-[32px] font-extrabold mb-1" style={{ color: "rgba(167,139,250,0.20)" }}>
                     {ch.num}
                   </div>
 
@@ -237,10 +237,10 @@ export default function Journey() {
                       className="font-extrabold tracking-tighter select-none leading-none w-[96px] text-center text-[32px] md:text-[44px] lg:text-[56px] pt-[36px]"
                       style={{
                         color: isHovered
-                          ? "rgba(167,139,250,0.16)"
+                          ? "rgba(167,139,250,0.24)"
                           : idx === 3
-                          ? "rgba(167,139,250,0.10)"
-                          : "rgba(167,139,250,0.05)",
+                          ? "rgba(167,139,250,0.16)"
+                          : "rgba(167,139,250,0.10)",
                         transition: "color 400ms"
                       }}
                     >
